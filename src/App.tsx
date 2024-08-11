@@ -248,6 +248,18 @@ function App() {
     }, []);
   }
 
+  const addCity = (cityName: string) => {
+    const cityAlreadyExists = cities.some((city) => city.name.toLowerCase() === cityName.toLowerCase());
+    if (cityAlreadyExists) {
+      return false;
+    }
+    setCities([...cities, {
+      id: Date.now(),
+      name: cityName,
+    }]);
+    return true;
+  };
+
   useEffect(() => {
     localStorage.setItem('cities', JSON.stringify(cities));
   }, [cities]);
@@ -255,7 +267,7 @@ function App() {
   return (
     <div>
       <h1>City List</h1>
-      <AddCityForm />
+      <AddCityForm addCity={addCity} />
       <CityList />
     </div>
   )
