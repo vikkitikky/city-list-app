@@ -11,7 +11,7 @@
 	padding: 10px;
 	border-radius: 5px;
 	border: 1px solid #ccc;
-	width: 200px;
+	width: 230px;
 	margin-right: 10px;
 	font-size: 16px;
 }
@@ -29,4 +29,12 @@
 
 .addCityForm button:hover {
 	background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+	.addCityForm input {
+		margin-right: 0;
+		margin-bottom: 10px;
+		width: 100%;
+	}
 }

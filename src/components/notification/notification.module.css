@@ -19,3 +19,11 @@
 .error {
 	background-color: #ff4c4c;
 }
+
+@media (max-width: 600px) {
+	.notification {
+		top: 10px;
+		right: 10px;
+		font-size: 14px;
+	}
+}
