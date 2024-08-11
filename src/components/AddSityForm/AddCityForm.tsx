@@ -1,5 +1,7 @@
 import { FC, FormEvent, useState } from 'react';
-import { useNotification } from '../hook/useNotification.ts';
+import { useNotification } from '../../hook/useNotification';
+import NotificationAlert from '../notification/Notification.tsx';
+import styles from './addCityForm.module.css';
 
 interface AddCityFormProps {
   addCity: (cityName: string) => boolean;
@@ -17,22 +19,28 @@ const AddCityForm: FC<AddCityFormProps> = ({ addCity }) => {
     }
     const cityWasAdded = addCity(newCityName);
     if (cityWasAdded) {
-      showNotification(`Город ${newCityName} был добавлен`);
+      showNotification({
+        message: `Город ${newCityName} был добавлен`,
+        isSuccess: true,
+      });
       setNewCity('');
     } else {
-      showNotification(`Город ${newCityName} уже есть в списке`);
+      showNotification({
+        message: `Город ${newCityName} уже есть в списке`,
+        isSuccess: false,
+    });
     }
   };
 
   return (
     <>
-      {notification && <div>{notification}</div>}
-      <form onSubmit={onSubmit}>
+      <NotificationAlert notification={notification} />
+      <form onSubmit={onSubmit} className={styles.addCityForm}>
         <input
           type="text"
           value={newCity}
           onChange={(e) => setNewCity(e.target.value)}
-          placeholder="Введите новое название города"
+          placeholder="Введите новое название"
         />
         <button type="submit">Добавить город</button>
       </form>

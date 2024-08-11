@@ -1,0 +1,32 @@
+.addCityForm {
+	display: flex;
+	gap: 12px;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+.addCityForm input {
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	width: 200px;
+	margin-right: 10px;
+	font-size: 16px;
+}
+
+.addCityForm button {
+	padding: 10px 15px;
+	border-radius: 5px;
+	border: none;
+	background-color: #4CAF50;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.addCityForm button:hover {
+	background-color: #45a049;
+}

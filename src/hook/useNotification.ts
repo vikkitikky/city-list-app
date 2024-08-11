@@ -1,12 +1,22 @@
 import { useEffect, useState } from 'react';
 
-export const useNotification = (initialNotification: string = '', duration: number = 1500): [string, (newMessage: string) => void] => {
+export interface Notification {
+  isSuccess: boolean ;
+  message: string;
+}
+
+type UseNotification = (
+  initialNotification?: Notification | null,
+  duration?: number
+) => [Notification, (message: Notification) => void];
+
+export const useNotification: UseNotification = (initialNotification = null, duration = 1500) => {
   const [notification, setNotification] = useState(initialNotification);
 
   useEffect(() => {
     if (notification) {
       const timer = setTimeout(() => {
-        setNotification('');
+        setNotification(null);
       }, duration);
       return () => {
         clearTimeout(timer);
@@ -14,7 +24,7 @@ export const useNotification = (initialNotification: string = '', duration: numb
     }
   }, [notification, duration]);
 
-  const showNotification = (newMessage: string): void => {
+  const showNotification = (newMessage: Notification): void => {
     setNotification(newMessage);
   };
 

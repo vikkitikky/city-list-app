@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import { City } from '../App.tsx';
+import { City } from '../../App.tsx';
+import styles from './cityList.module.css'
 
 interface CityListProps {
   cities: City[]
@@ -21,13 +22,13 @@ const CityList: FC<CityListProps> = ({ cities }) => {
   }, []);
 
   return (
-    <ul>
+    <ul className={styles.cityList}>
       {groupedCities.map(({ letter, cities }) => (
         <li key={letter.charCodeAt(0)}>
-          <h2>{letter}</h2>
-          <ul>
+          <h2 className={styles.cityLetter}>{letter}</h2>
+          <ul className={styles.cityList}>
             {cities.map((city) => (
-              <li key={city.id}>{city.name}</li>
+              <li className={styles.cityItem} key={city.id}>{city.name}</li>
             ))}
           </ul>
         </li>

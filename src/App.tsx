@@ -1,7 +1,7 @@
-import './App.css'
-import AddCityForm from './components/AddCityForm.tsx';
-import CityList from './components/CityList.tsx';
+import AddCityForm from './components/AddSityForm/AddCityForm.tsx';
+import CityList from './components/CityList/CityList.tsx';
 import { useEffect, useState } from 'react';
+import './App.css';
 
 export type City = { id: number, name: string };
 
@@ -273,7 +273,7 @@ function App() {
   }, [cities]);
 
   return (
-    <div>
+    <div className="app-container">
       <h1>City List</h1>
       <AddCityForm addCity={addCity} />
       <CityList cities={cities} />

@@ -1,0 +1,26 @@
+.cityList {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.cityList .cityLetter {
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 20px;
+	color: #333;
+}
+
+.cityList .cityItem {
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+	font-size: 18px;
+	color: #555;
+	transition: background-color 0.3s ease;
+}
+
+.cityList .cityItem:hover {
+	background-color: #f9f9f9;
+}
