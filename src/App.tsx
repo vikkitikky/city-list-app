@@ -239,13 +239,15 @@ function App() {
   });
 
   function getUniqueCities(list: City[]) {
-    return list.reduce((acc: City[], current): City[] => {
+    const listWithUniqueValues = list.reduce((acc: City[], current): City[] => {
       const city = acc.find((city) => city.name.toLowerCase() === current.name.toLowerCase());
       if (!city) {
         acc.push(current);
       }
       return acc;
     }, []);
+    listWithUniqueValues.sort((a, b) => a.name[0].charCodeAt(0) - b.name[0].charCodeAt(0));
+    return listWithUniqueValues;
   }
 
   const addCity = (cityName: string) => {
@@ -268,7 +270,7 @@ function App() {
     <div>
       <h1>City List</h1>
       <AddCityForm addCity={addCity} />
-      <CityList />
+      <CityList cities={cities} />
     </div>
   )
 }
