@@ -235,8 +235,12 @@ const defaultCities: City[] = [
 function App() {
   const [cities, setCities] = useState<City[]>(() => {
     const savedCities = localStorage.getItem('cities');
-    return savedCities ? JSON.parse(savedCities) : getUniqueCities(defaultCities);
+    return savedCities ? JSON.parse(savedCities).sort(compareCitiesName) : getUniqueCities(defaultCities);
   });
+
+  function compareCitiesName(a: City, b: City): number {
+    return a.name.localeCompare(b.name);
+  }
 
   function getUniqueCities(list: City[]) {
     const listWithUniqueValues = list.reduce((acc: City[], current): City[] => {
@@ -246,7 +250,7 @@ function App() {
       }
       return acc;
     }, []);
-    listWithUniqueValues.sort((a, b) => a.name[0].charCodeAt(0) - b.name[0].charCodeAt(0));
+    listWithUniqueValues.sort(compareCitiesName);
     return listWithUniqueValues;
   }
 
@@ -255,10 +259,12 @@ function App() {
     if (cityAlreadyExists) {
       return false;
     }
-    setCities([...cities, {
+    const newList = ([...cities, {
       id: Date.now(),
       name: cityName,
     }]);
+    newList.sort(compareCitiesName)
+    setCities(newList);
     return true;
   };
 
