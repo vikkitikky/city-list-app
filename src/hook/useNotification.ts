@@ -1,17 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 export interface Notification {
-  isSuccess: boolean ;
+  isSuccess: boolean;
   message: string;
 }
 
 type UseNotification = (
-  initialNotification?: Notification | null,
   duration?: number
-) => [Notification, (message: Notification) => void];
+) => [Notification | null, (message: Notification) => void];
 
-export const useNotification: UseNotification = (initialNotification = null, duration = 1500) => {
-  const [notification, setNotification] = useState(initialNotification);
+export const useNotification: UseNotification = (duration = 1500) => {
+  const [notification, setNotification] = useState<Notification | null>(null);
 
   useEffect(() => {
     if (notification) {

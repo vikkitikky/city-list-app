@@ -1,6 +1,6 @@
-import { FC } from 'react';
-import styles from './notification.module.css';
-import { Notification } from '../../hook/useNotification';
+import { FC } from 'react'
+import { Notification } from '../../hook/useNotification'
+import styles from './notification.module.css'
 
 interface NotificationProps {
   notification: Notification | null;
