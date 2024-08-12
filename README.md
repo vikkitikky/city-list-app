@@ -19,3 +19,5 @@
 `npm run build`
 
 `npm run preview`
+
+### Посмотреть результат можно [здесь](https://vikkitikky.github.io/city-list-app/)
